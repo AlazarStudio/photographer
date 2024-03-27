@@ -1,213 +1,223 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  scroll-behavior: smooth;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 body {
-    padding: 80px;
+  padding: 80px;
 }
 
 .header_title {
-    font-family: Perpetua Titling MT;
-    font-size: 64px;
-    font-weight: 300;
-    line-height: 75.72px;
-    text-align: center;
+  font-family: Perpetua Titling MT;
+  font-size: 64px;
+  font-weight: 300;
+  line-height: 75.72px;
+  text-align: center;
 }
 
 .header_subtitle {
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 19.5px;
-    text-align: center;
-    color: #959595;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  text-align: center;
+  color: #959595;
 }
 
 .header_nav {
-    margin-top: 65px;
+  margin-top: 65px;
 }
 
 .header_nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 55px;
+  display: flex;
+  justify-content: center;
+  gap: 55px;
 }
 
 .header_nav ul li a {
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 19.5px;
-    letter-spacing: 0.21em;
-    text-align: center;
-    color: #000;
-    text-transform: uppercase;
-    padding: 10px;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19.5px;
+  letter-spacing: 0.21em;
+  text-align: center;
+  color: #000;
+  text-transform: uppercase;
+  padding: 10px;
 }
 
 .header_nav ul li a:hover,
 .activePage {
-    border-bottom: 1px solid #000;
+  border-bottom: 1px solid #000;
 }
 
 /*  */
 
 main {
-    margin: 85px 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 26px;
+  margin: 85px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 26px;
 }
 
 .main_column {
-    display: flex;
-    flex-direction: column;
-    gap: 26px;
-    width: 32%;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  width: 32%;
 }
 
 .main_column__item {
-    width: 100%;
+  width: 100%;
 }
 
 .main_column__item img {
-    width: 100%;
+  width: 100%;
 }
 
 footer {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 45px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 45px;
 }
 
 .footer_title {
-    font-family: Montserrat;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 29.26px;
-    text-align: center;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29.26px;
+  text-align: center;
+}
+
+.footer_logo {
+  width: 180px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.footer_logo img {
+  width: 100%;
 }
 
 .pricelist {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
 }
 
 .pricelist_title {
-    font-family: Montserrat;
-    font-size: 36px;
-    font-weight: 500;
-    line-height: 43.88px;
+  font-family: Montserrat;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 43.88px;
 }
 
 .min_tarif {
-    background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
 .normal_tarif {
-    background-color: #E5E7EB;
+  background-color: #e5e7eb;
 }
 
 .max_tarif {
-    background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
 .pricelist_tarifs {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }
 
 .pricelist_tarifs__item {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    width: 375px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 375px;
 }
 
 .pricelist_tarifs__item___title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    font-family: Montserrat;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 29.26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29.26px;
 }
 
 .pricelist_tarifs__item___desc {
-    height: 385px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px;
-    font-family: Montserrat;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 30px;
-    text-align: center;
+  height: 385px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: center;
 }
 
 .pricelist_tarifs__item___desc____price {
-    font-family: Montserrat;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 29.26px;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29.26px;
 }
 
 .contacts {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
 }
 
 .contacts_title {
-    font-family: Montserrat;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 36px;
-    text-align: center;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center;
 }
 
 .contacts_links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
 .contacts_links a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Montserrat;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 24.38px;
-    background: #000000;
-    border-radius: 50px;
-    padding: 40px;
-    width: 430px;
-    color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.38px;
+  background: #000000;
+  border-radius: 50px;
+  padding: 40px;
+  width: 430px;
+  color: #fff;
 }
