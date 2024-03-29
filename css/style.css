@@ -221,3 +221,12 @@ footer {
   width: 430px;
   color: #fff;
 }
+
+
+.error {
+  border: 1px solid red;
+}
+
+.filled {
+  border: 1px solid green;
+}

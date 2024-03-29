@@ -91,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       actions: {
         clickDay(e, self) {
           chosenDate = self.selectedDates;
+          $("#date").val(chosenDate);
         },
       },
     });
@@ -98,3 +99,25 @@ document.addEventListener("DOMContentLoaded", () => {
     calendar.init();
   });
 });
+
+
+
+var targets = document.querySelectorAll('.swiper-slide');
+
+targets.forEach(function(target) {
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        var classList = target.classList;
+        // Проверка, содержит ли элемент определенный класс
+        if (classList.contains('swiper-slide-active')) {
+          $("#time").val($(".swiper-slide-active").html());
+        }
+      }
+    });
+  });
+  
+  var config = { attributes: true, attributeFilter: ['class'] };
+  observer.observe(target, config);
+});
+

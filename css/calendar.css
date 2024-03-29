@@ -73,7 +73,13 @@
   background-color: #ffc107 !important;
   color: #fff !important;
 }
+.vanilla-calendar-day__btn_selected {
+  background-color: rgb(6 182 212) !important;
+}
 
+.vanilla-calendar-day__btn_weekend.vanilla-calendar-day__btn_selected {
+  background-color: #f43f5e !important;
+}
 /*  */
 
 .swiper-container {

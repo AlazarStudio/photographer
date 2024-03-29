@@ -75,7 +75,7 @@ $dataArray = $universalModel->getData();
 
 if ($dataArray['img'] && $files['fileInput']['name'][0] == '') {
     session_start();
-    $_SESSION['error_add'] = 'Ошибка: Размер файла ' . $originalFilename . ' превышает 1 МБ.<br>';
+    $_SESSION['error_add'] = 'Ошибка: Размер файла ' . $originalFilename . ' превышает 32 МБ.<br>';
     $_SESSION['error_add__changeData'] = $dataArray;
 
     header('Location: /admin/?tab_name=' . $tableName);

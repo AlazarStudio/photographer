@@ -60,7 +60,7 @@ function getSchema()
                     'type' => 'text',
                     'required' => false,
                 ],
-                'img' => [
+                'img' => [  
                     'name' => 'Картинки для галереи',
                     'element' => 'input',
                     'type' => 'file',
