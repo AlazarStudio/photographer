@@ -87,34 +87,14 @@
 
       <section class="calendar_section formBlock">
 
-        <!-- <form action="mail/mail.php" id="myForm" method="post"> -->
-        <form id="myForm" method="post">
+        <form action="mail/mail.php" id="myForm" method="post">
+        <!-- <form id="myForm" method="post"> -->
           <div class="calendar_block">
             <div class="calendar_block__time">
               <div class="calendar_block__time___text">
                 Начало съемки
                 <div class="swiper swiper-container">
                   <div class="swiper-wrapper">
-                    <div class="swiper-slide">00:00</div>
-                    <div class="swiper-slide">00:30</div>
-                    <div class="swiper-slide">01:00</div>
-                    <div class="swiper-slide">01:30</div>
-                    <div class="swiper-slide">02:00</div>
-                    <div class="swiper-slide">02:30</div>
-                    <div class="swiper-slide">03:00</div>
-                    <div class="swiper-slide">03:30</div>
-                    <div class="swiper-slide">04:00</div>
-                    <div class="swiper-slide">04:30</div>
-                    <div class="swiper-slide">05:00</div>
-                    <div class="swiper-slide">05:30</div>
-                    <div class="swiper-slide">06:00</div>
-                    <div class="swiper-slide">06:30</div>
-                    <div class="swiper-slide">07:00</div>
-                    <div class="swiper-slide">07:30</div>
-                    <div class="swiper-slide">08:00</div>
-                    <div class="swiper-slide">08:30</div>
-                    <div class="swiper-slide">09:00</div>
-                    <div class="swiper-slide">09:30</div>
                     <div class="swiper-slide">10:00</div>
                     <div class="swiper-slide">10:30</div>
                     <div class="swiper-slide">11:00</div>
@@ -132,17 +112,6 @@
                     <div class="swiper-slide">17:00</div>
                     <div class="swiper-slide">17:30</div>
                     <div class="swiper-slide">18:00</div>
-                    <div class="swiper-slide">18:30</div>
-                    <div class="swiper-slide">19:00</div>
-                    <div class="swiper-slide">19:30</div>
-                    <div class="swiper-slide">20:00</div>
-                    <div class="swiper-slide">20:30</div>
-                    <div class="swiper-slide">21:00</div>
-                    <div class="swiper-slide">21:30</div>
-                    <div class="swiper-slide">22:00</div>
-                    <div class="swiper-slide">22:30</div>
-                    <div class="swiper-slide">23:00</div>
-                    <div class="swiper-slide">23:30</div>
                   </div>
                   <div class="swiper-button-prev"></div>
                   <div class="swiper-button-next"></div>
@@ -150,8 +119,8 @@
               </div>
 
               <div class="calendar_block__time___text">
-                Количество часов <br> (от 1 до 12)
-                <input name="hour" class="calendar_block__time___input" type="number" min="1" max="12" value="1">
+                Количество часов <br> (от 1 до 10)
+                <input name="hour" class="calendar_block__time___input" type="number" min="1" max="10" value="1">
               </div>
 
             </div>
@@ -166,8 +135,9 @@
           </div>
 
         </form>
-
         <div id="calendar"></div>
+
+        <div id="date_events"></div>
 
       </section>
       <!-- <div class="calendar">

@@ -59,16 +59,43 @@ getData("galery").then((response) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   getData("request").then((response) => {
-    let qwer = {};
+    let popups = {};
+    let popups2 = {};
+
     response.forEach((element) => {
-      let date = element.date;
-      let time = element.time;
-      let meetingDescription = "Meeting at " + time;
-      qwer[date] = {
-        modifier: "bg-orange",
-        html: meetingDescription,
-      };
+      if (element.modered == "yes") {
+        let date = element.date;
+        let time = element.time;
+        let hour = element.hour;
+
+        hour = ("0" + hour).slice(-2);
+
+        let endTime = new Date("1970-01-01T" + time + ":00");
+        endTime.setHours(endTime.getHours() + parseInt(hour));
+        let endTimeFormatted =
+          ("0" + endTime.getHours()).slice(-2) +
+          ":" +
+          ("0" + endTime.getMinutes()).slice(-2);
+
+        let meetingDescription =
+          "Забронировано с " + time + " до " + endTimeFormatted;
+
+        popups[date] = {
+          modifier: "bg-orange",
+          html: meetingDescription,
+        };
+
+        if (!popups2[date]) {
+          popups2[date] = [];
+        }
+
+        popups2[date].push({
+          modifier: "bg-orange",
+          html: meetingDescription,
+        });
+      }
     });
+
     let chosenDate;
 
     const calendar = new VanillaCalendar("#calendar", {
@@ -80,18 +107,30 @@ document.addEventListener("DOMContentLoaded", () => {
         range: {
           disablePast: true,
         },
-        // selection: {
-        //   time: 24,
-        //   controlTime: "all",
-        // },
       },
 
-      popups: qwer,
+      popups: popups,
 
       actions: {
         clickDay(e, self) {
           chosenDate = self.selectedDates;
           $("#date").val(chosenDate);
+
+          // $("#date_events").empty().append(popups2[chosenDate]);
+
+          $("#date_events").empty();
+
+          popups2[chosenDate].forEach((event) => {
+            
+            const eventDiv = $("<div>")
+              .addClass(event.modifier)
+              .html(event.html);
+
+            // Добавляем созданный элемент в контейнер $("#date_events")
+            $("#date_events").append(eventDiv);
+          });
+
+          console.log(popups2[chosenDate]);
         },
       },
     });
@@ -100,24 +139,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+var targets = document.querySelectorAll(".swiper-slide");
 
-
-var targets = document.querySelectorAll('.swiper-slide');
-
-targets.forEach(function(target) {
-  var observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+targets.forEach(function (target) {
+  var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "class"
+      ) {
         var classList = target.classList;
-        // Проверка, содержит ли элемент определенный класс
-        if (classList.contains('swiper-slide-active')) {
+
+        if (classList.contains("swiper-slide-active")) {
           $("#time").val($(".swiper-slide-active").html());
         }
       }
     });
   });
-  
-  var config = { attributes: true, attributeFilter: ['class'] };
+
+  var config = { attributes: true, attributeFilter: ["class"] };
   observer.observe(target, config);
 });
-

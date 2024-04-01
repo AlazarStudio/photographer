@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $request->date = $date;
         $request->time = $time;
         $request->hour = $hour;
-        $request->modered = '';
+        $request->modered = 'no';
 
         R::store($request);
 
@@ -35,7 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headers = "From: $email";
 
         if (mail($to, $subject, $message, $headers)) {
-            echo "Ваш заказ успешно оформлен.";
+            // echo "Ваш заказ успешно оформлен.";
+            header("Location: /bronirovanie.html");
         } else {
             echo "При отправке заказа произошла ошибка.";
         }
