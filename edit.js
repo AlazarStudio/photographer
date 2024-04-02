@@ -57,47 +57,62 @@ getData("galery").then((response) => {
 
 // ----------------------------------------------------------------
 
+
+// let popups = {};
+// // let popups2 = {};
+
+
 document.addEventListener("DOMContentLoaded", () => {
   getData("request").then((response) => {
     let popups = {};
     let popups2 = {};
+    let bookedTimeSlots = {}; // Объект для хранения забронированных промежутков времени
 
     response.forEach((element) => {
+      let date = element.date;
+      let time = element.time;
+      let hour = element.hour;
+      hour = ("0" + hour).slice(-2);
+      let endTime = new Date("1970-01-01T" + time + ":00");
+      endTime.setHours(endTime.getHours() + parseInt(hour));
+      let endTimeFormatted =
+        ("0" + endTime.getHours()).slice(-2) +
+        ":" +
+        ("0" + endTime.getMinutes()).slice(-2);
+      let meetingDescription = "";
+
       if (element.modered == "yes") {
-        let date = element.date;
-        let time = element.time;
-        let hour = element.hour;
-
-        hour = ("0" + hour).slice(-2);
-
-        let endTime = new Date("1970-01-01T" + time + ":00");
-        endTime.setHours(endTime.getHours() + parseInt(hour));
-        let endTimeFormatted =
-          ("0" + endTime.getHours()).slice(-2) +
-          ":" +
-          ("0" + endTime.getMinutes()).slice(-2);
-
-        let meetingDescription =
+        meetingDescription =
           "Забронировано с " + time + " до " + endTimeFormatted;
-
-        popups[date] = {
-          modifier: "bg-orange",
-          html: meetingDescription,
-        };
-
-        if (!popups2[date]) {
-          popups2[date] = [];
+        // Записываем забронированные промежутки времени для данной даты
+        if (!bookedTimeSlots[date]) {
+          bookedTimeSlots[date] = [];
         }
-
-        popups2[date].push({
-          modifier: "bg-orange",
-          html: meetingDescription,
+        bookedTimeSlots[date].push({
+          startTime: time,
+          endTime: endTimeFormatted
         });
+      } else if (element.modered == "no") {
+        meetingDescription =
+          "Предварительная бронь с " + time + " до " + endTimeFormatted;
       }
+
+      popups[date] = {
+        modifier: "bg-orange",
+        html: meetingDescription,
+      };
+
+      if (!popups2[date]) {
+        popups2[date] = [];
+      }
+
+      popups2[date].push({
+        modifier: "bg-orange",
+        html: meetingDescription,
+      });
     });
 
     let chosenDate;
-
     const calendar = new VanillaCalendar("#calendar", {
       settings: {
         lang: "ru",
@@ -108,31 +123,24 @@ document.addEventListener("DOMContentLoaded", () => {
           disablePast: true,
         },
       },
-
       popups: popups,
-
       actions: {
         clickDay(e, self) {
           chosenDate = self.selectedDates;
           $("#date").val(chosenDate);
-
-          // $("#date_events").empty().append(popups2[chosenDate]);
-
           $("#date_events").empty().hide();
-
           if (popups2[chosenDate]) {
             popups2[chosenDate].forEach((event) => {
-              const eventDiv = $("<div class='event_item'>")
-                .html(event.html);
-          
+              const eventDiv = $("<div class='event_item'>").html(event.html);
               $("#date_events").append(eventDiv);
             });
-            
-            // Показываем блок с анимацией
-            $("#date_events").slideDown(1000);
-          }          
+            $("#date_events").slideDown(600, function () {
+              $(this).css('display', 'flex');
+            });
+          }
 
-          console.log(popups2[chosenDate]);
+          // Генерируем список временных слотов для выбранной даты
+          generateTimeOptions(chosenDate, bookedTimeSlots);
         },
       },
     });
@@ -141,24 +149,62 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-var targets = document.querySelectorAll(".swiper-slide");
+function generateTimeOptions(chosenDate, bookedTimeSlots) {
+  const timeSelect = document.getElementById('time_select');
+  timeSelect.innerHTML = '';
 
-targets.forEach(function (target) {
-  var observer = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
-      if (
-        mutation.type === "attributes" &&
-        mutation.attributeName === "class"
-      ) {
-        var classList = target.classList;
-
-        if (classList.contains("swiper-slide-active")) {
-          $("#time").val($(".swiper-slide-active").html());
+  // Если для выбранной даты есть забронированные промежутки времени, отключаем выбор в этих интервалах
+  if (bookedTimeSlots[chosenDate]) {
+    const bookedSlots = bookedTimeSlots[chosenDate];
+    for (let i = 10; i <= 18; i++) {
+      const hour = i < 10 ? "0" + i : i;
+      const timeSlot = hour + ":00";
+      let isBooked = false;
+      for (const slot of bookedSlots) {
+        if (timeSlot >= slot.startTime && timeSlot < slot.endTime) {
+          isBooked = true;
+          break;
         }
       }
-    });
-  });
+      if (!isBooked) {
+        const option = document.createElement('option');
+        option.value = timeSlot;
+        option.textContent = timeSlot;
+        timeSelect.appendChild(option);
+      }
+    }
+  } else {
+    // Если для выбранной даты нет забронированных промежутков времени, разрешаем выбор с 10:00 до 18:00
+    for (let i = 10; i <= 18; i++) {
+      const hour = i < 10 ? "0" + i : i;
+      const option = document.createElement('option');
+      option.value = hour + ":00";
+      option.textContent = hour + ":00";
+      timeSelect.appendChild(option);
+    }
+  }
+}
 
-  var config = { attributes: true, attributeFilter: ["class"] };
-  observer.observe(target, config);
-});
+
+
+// var targets = document.querySelectorAll(".swiper-slide");
+
+// targets.forEach(function (target) {
+//   var observer = new MutationObserver(function (mutations) {
+//     mutations.forEach(function (mutation) {
+//       if (
+//         mutation.type === "attributes" &&
+//         mutation.attributeName === "class"
+//       ) {
+//         var classList = target.classList;
+
+//         if (classList.contains("swiper-slide-active")) {
+//           $("#time").val($(".swiper-slide-active").html());
+//         }
+//       }
+//     });
+//   });
+//   var config = { attributes: true, attributeFilter: ["class"] };
+//   observer.observe(target, config);
+// });
+

@@ -230,12 +230,3 @@ footer {
   border: 1px solid green;
 }
 
-.date_events {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 30px 16px 16px 0px;
-}
-
-.event_item {
-}

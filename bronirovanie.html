@@ -85,63 +85,82 @@
 
       <h2 class="pricelist_title">ЗАБРОНИРОВАТЬ ФОТОСЪЕМКУ</h2>
 
-      <section class="calendar_section formBlock">
-
-        <form action="mail/mail.php" id="myForm" method="post">
-        <!-- <form id="myForm" method="post"> -->
-          <div class="calendar_block">
-            <div class="calendar_block__time">
-              <div class="calendar_block__time___text">
-                Начало съемки
-                <div class="swiper swiper-container">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide">10:00</div>
-                    <div class="swiper-slide">10:30</div>
-                    <div class="swiper-slide">11:00</div>
-                    <div class="swiper-slide">11:30</div>
-                    <div class="swiper-slide">12:00</div>
-                    <div class="swiper-slide">12:30</div>
-                    <div class="swiper-slide">13:00</div>
-                    <div class="swiper-slide">13:30</div>
-                    <div class="swiper-slide">14:00</div>
-                    <div class="swiper-slide">14:30</div>
-                    <div class="swiper-slide">15:00</div>
-                    <div class="swiper-slide">15:30</div>
-                    <div class="swiper-slide">16:00</div>
-                    <div class="swiper-slide">16:30</div>
-                    <div class="swiper-slide">17:00</div>
-                    <div class="swiper-slide">17:30</div>
-                    <div class="swiper-slide">18:00</div>
+      <section>
+        <section class="calendar_section formBlock">
+          <form action="mail/mail.php" id="myForm" method="post">
+            <div class="calendar_block">
+              <!-- <div class="calendar_block__time">
+                <div class="calendar_block__time___text">
+                  Начало съемки
+                  <div class="swiper swiper-container">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">10:00</div>
+                      <div class="swiper-slide">10:30</div>
+                      <div class="swiper-slide">11:00</div>
+                      <div class="swiper-slide">11:30</div>
+                      <div class="swiper-slide">12:00</div>
+                      <div class="swiper-slide">12:30</div>
+                      <div class="swiper-slide">13:00</div>
+                      <div class="swiper-slide">13:30</div>
+                      <div class="swiper-slide">14:00</div>
+                      <div class="swiper-slide">14:30</div>
+                      <div class="swiper-slide">15:00</div>
+                      <div class="swiper-slide">15:30</div>
+                      <div class="swiper-slide">16:00</div>
+                      <div class="swiper-slide">16:30</div>
+                      <div class="swiper-slide">17:00</div>
+                      <div class="swiper-slide">17:30</div>
+                      <div class="swiper-slide">18:00</div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                   </div>
-                  <div class="swiper-button-prev"></div>
-                  <div class="swiper-button-next"></div>
                 </div>
+                <div class="calendar_block__time___text">
+                  Количество часов <br> (от 1 до 10)
+                  <input name="hour" class="calendar_block__time___input" type="number" min="1" max="10" value="1">
+                </div>
+              </div> -->
+              <div class="calendar_block__time">
+                <label for="time_select">Начало съемки</label>
+                <select id="time_select" name="time">
+                  <!-- Варианты времени будут сгенерированы программно -->
+                </select>
               </div>
-
-              <div class="calendar_block__time___text">
-                Количество часов <br> (от 1 до 10)
-                <input name="hour" class="calendar_block__time___input" type="number" min="1" max="10" value="1">
+              <div class="calendar_block__time">
+                <label for="hour_select">Количество часов</label>
+                <select id="hour_select" name="hour">
+                  <!-- Варианты количества часов от 1 до 10 -->
+                  <option value="1">1 час</option>
+                  <option value="2">2 часа</option>
+                  <option value="3">3 часа</option>
+                  <option value="4">4 часа</option>
+                  <option value="5">5 часов</option>
+                  <option value="6">6 часов</option>
+                  <option value="7">7 часов</option>
+                  <option value="8">8 часов</option>
+                  <option value="9">9 часов</option>
+                  <option value="10">10 часов</option>
+                  <!-- Добавьте остальные варианты до 10 часов -->
+                </select>
               </div>
-
+              
+              
+              <div class="calendar_block__inputs">
+                <input id="date" name="date" type="hidden">
+                <input id="time" name="time" type="hidden" value="12:00">
+                <input name="name" class="calendar_input" type="text" placeholder="ФИО">
+                <input name="phone" class="calendar_input" type="text" placeholder="Телефон для уточнения">
+                <input name="email" class="calendar_input" type="text" placeholder="Email">
+                <button class="calendar_button" type="submit">Отправить заявку</button>
+              </div>
             </div>
-            <div class="calendar_block__inputs">
-              <input id="date" name="date" type="hidden">
-              <input id="time" name="time" type="hidden" value="12:00">
-              <input name="name" class="calendar_input" type="text" placeholder="ФИО">
-              <input name="phone" class="calendar_input" type="text" placeholder="Телефон для уточнения">
-              <input name="email" class="calendar_input" type="text" placeholder="Email">
-              <button class="calendar_button" type="submit" >Отправить заявку</button>
-            </div>
-          </div>
-
-        </form>
-        <div id="calendar"></div>
-        
+          </form>
+          <div id="calendar"></div>
+        </section>
         <div id="date_events" class="date_events"></div>
-
       </section>
 
-      
 
       <!-- <div class="calendar">
             <img src="refs/kalendar.png" alt="">
