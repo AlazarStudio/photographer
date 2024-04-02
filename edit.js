@@ -118,17 +118,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // $("#date_events").empty().append(popups2[chosenDate]);
 
-          $("#date_events").empty();
+          $("#date_events").empty().hide();
 
-          popups2[chosenDate].forEach((event) => {
+          if (popups2[chosenDate]) {
+            popups2[chosenDate].forEach((event) => {
+              const eventDiv = $("<div class='event_item'>")
+                .html(event.html);
+          
+              $("#date_events").append(eventDiv);
+            });
             
-            const eventDiv = $("<div>")
-              .addClass(event.modifier)
-              .html(event.html);
-
-            // Добавляем созданный элемент в контейнер $("#date_events")
-            $("#date_events").append(eventDiv);
-          });
+            // Показываем блок с анимацией
+            $("#date_events").slideDown(1000);
+          }          
 
           console.log(popups2[chosenDate]);
         },
