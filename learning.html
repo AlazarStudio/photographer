@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOLAEV ARTUR PHOTOGRAPHER</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/feedback.css">
 </head>
+
 <body>
     <header>
         <h1 class="header_title">DOLAEV ARTUR</h1>
@@ -23,12 +26,66 @@
     </header>
 
     <main>
-        Обучение
+
+        <!--  -->
+
+        <div class="form-box">
+            <div class="textup">
+                <i class="fa fa-solid fa-clock"></i>
+                Это займет всего две минуты!!!
+            </div>
+            <form action="mail/feedback.php" method="post">
+                <label for="uname">
+                    <i class="fa fa-solid fa-user"></i>
+                    Ваше имя
+                </label>
+                <input type="text" id="uname" name="uname" required>
+
+                <label for="email">
+                    <i class="fa fa-solid fa-envelope"></i>
+                    Email 
+                </label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">
+                    <i class="fa-solid fa-phone"></i>
+                    Номер телефона
+                </label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <!-- <label>
+                    <i class="fa-solid fa-face-smile"></i>
+                    Do you satisfy with our service?
+                </label>
+                <div class="radio-group">
+                    <input type="radio" id="yes" name="satisfy" value="yes" checked>
+                    <label for="yes">Yes</label>
+
+                    <input type="radio" id="no" name="satisfy" value="no">
+                    <label for="no">No</label>
+                </div> -->
+
+                <label for="msg">
+                    <i class="fa-solid fa-comments" style="margin-right: 3px;"></i>
+                    Напишите свои предложения:
+                </label>
+                <textarea id="msg" name="msg" rows="4" cols="10" required>
+                </textarea>
+                <button type="submit">
+                    Отправить
+                </button>
+            </form>
+        </div>
+
+        <!--  -->
+
     </main>
 
     <footer>
         <div class="footer_title">ИП Долаев А. <br> Все права защищены.</div>
-        <a href="https://alazarstudio.ru" target="_blank" class="footer_logo"><img src="refs/logo_alazar_black.png" alt=""></a>
+        <a href="https://alazarstudio.ru" target="_blank" class="footer_logo"><img src="refs/logo_alazar_black.png"
+                alt=""></a>
     </footer>
 </body>
+
 </html>
