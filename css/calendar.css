@@ -20,12 +20,15 @@
   display: flex;
   flex-direction: column;
   padding: 30px 20px 30px 30px;
-  justify-content: space-between;
-  gap: 30px;
+  /* justify-content: space-between; */
+  gap: 15px;
+  width: 400px;
+  height: 100%;
 }
 
 .calendar_block__time {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -47,11 +50,24 @@
 .calendar_block__inputs {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 10px;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.calendar_block__inputs___gap{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.calendar_block__inputs___gap p{
+  font-size: 12px;
 }
 
 .calendar_input {
-  width: 280px;
+  width: 100%;
   height: 50px;
   border-radius: 10px;
   border: 1px solid #000;
@@ -60,7 +76,7 @@
 }
 
 .calendar_button {
-  width: 280px;
+  width: 100%;
   height: 50px;
   border-radius: 10px;
   background: #000;
@@ -157,4 +173,13 @@
 
 .swiper-slide.disabled {
   display: none; /* или другие стили, чтобы задизейблить */
+}
+
+#time_select,
+#hour_select{
+  width: 150px;
+  outline: none;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
 }
