@@ -1,4 +1,6 @@
-
+* {
+    font-family: 'Montserrat';
+}
 main {
     display: flex;
     justify-content: center;
@@ -6,8 +8,8 @@ main {
 
 .textup { 
     text-align: center; 
-    color: rgb(51, 0, 58); 
-    font-weight: 700; 
+    color: rgb(0, 0, 0); 
+    font-weight: 600; 
 } 
   
 i { 
@@ -16,7 +18,7 @@ i {
   
 .form-box { 
     background-color: #fff; 
-    box-shadow: 0 0 10px rgba(36, 67, 40, 0.8); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.87); 
     padding: 15px; 
     border-radius: 8px; 
     width: 500px; 
@@ -40,7 +42,7 @@ label {
     display: block; 
     margin-bottom: 8px; 
     font-size: 17px; 
-    color: rgb(51, 0, 58); 
+    color: #000; 
     font-weight: 600; 
 } 
   
@@ -55,7 +57,7 @@ textarea {
 } 
   
 button { 
-    background-color: rgb(51, 0, 58); 
+    background-color: #000;
     color: #fff; 
     padding: 10px; 
     border: none; 
@@ -67,7 +69,7 @@ button {
 } 
   
 button:hover { 
-    background-color: rgb(65, 0, 73); 
+    background-color: #000;
     border: none; 
     transform: translateY(-10px); 
 } 
