@@ -1,6 +1,8 @@
 <?php
 require '../admin/includes/include.php'; 
 
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name = $_POST['name'];

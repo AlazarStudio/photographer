@@ -1,9 +1,10 @@
 <?php
 $tableName = $_GET['tab_name'];
 $records = R::findAll($tableName);
+$reversedRecords = array_reverse($records);
 ?>
 <div class="admin_info__item___content">
-    <?php foreach ($records as $record) { ?>
+    <?php foreach ($reversedRecords as $record) { ?>
         <div class="admin_info__item___content____element">
             <div class="admin_info__item___content____element_____title">
                 <img src="img/<?php echo explode(",", $record['img'])[0]; ?>" alt="">
