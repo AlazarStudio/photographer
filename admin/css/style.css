@@ -177,6 +177,16 @@
     gap: 20px;
 }
 
+.separate{
+    width: 100%;
+    border-bottom: 1px solid var(--item-hover);
+    margin: 20px 0;
+}
+
+.contentTitle{
+    width: 100%;
+}
+
 .admin_info__item___content____element {
     background-color: var(--item-hover);
     width: 49%;
