@@ -49,15 +49,20 @@ $reversedRecords = array_reverse($records);
 </div>
 
 <?php } else { ?>
-    <div class="admin_info__item___content____element ">
-        <div class="admin_info__item___content____element_____title">
-            <img src="img/<?php echo explode(",", $record['img'])[0]; ?>" alt="">
-            <?php echo ($record['title'] . '<br>' .  $dateShow) ?>
+    <?php foreach ($reversedRecords as $record) {
+            $dateShow = '';
+            if ($record['date']) {
+                $dateShow = date("d.m.Y", strtotime($record['date']));
+            } ?>
+        <div class="admin_info__item___content____element ">
+            <div class="admin_info__item___content____element_____title">
+                <img src="img/<?php echo explode(",", $record['img'])[0]; ?>" alt="">
+                <?php echo ($record['title'] . '<br>' .  $dateShow) ?>
+            </div>
+            <div class="admin_info__item___content____element_____btnHover">
+                <a href="editData.php?id=<?php echo $record['id'] ?>&tab_name=<?php echo $tableName ?>" class="admin_info__item___content____element_____btnHover______title <?php echo $tableName ?>Edit" idtoedit="<?php echo $record['id'] ?>">Изменить</a>
+                <div class="admin_info__item___content____element_____btnHover______title <?php echo $tableName ?>Delete delete" idtodel="<?php echo $record['id'] ?>">Удалить</div>
+            </div>
         </div>
-        <div class="admin_info__item___content____element_____btnHover">
-            <a href="editData.php?id=<?php echo $record['id'] ?>&tab_name=<?php echo $tableName ?>" class="admin_info__item___content____element_____btnHover______title <?php echo $tableName ?>Edit" idtoedit="<?php echo $record['id'] ?>">Изменить</a>
-            <div class="admin_info__item___content____element_____btnHover______title <?php echo $tableName ?>Delete delete" idtodel="<?php echo $record['id'] ?>">Удалить</div>
-        </div>
-    </div>
-
+    <?php } ?>
 <?php } ?>
