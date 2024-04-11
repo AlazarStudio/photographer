@@ -35,32 +35,51 @@ getData("galery").then((response) => {
   let block2 = $(".main_column__2").empty();
   let block3 = $(".main_column__3").empty();
 
+  let modal = $(".modal-content").empty();
+  let img_index = 1;
+
   response.forEach((element, index) => {
     const blockIndex = index % 3;
     if (stringToImageArray(element.img).length > 1) {
       for (let i = 0; i < stringToImageArray(element.img).length; i++) {
         $(`.main_column__${(i % 3) + 1}`).append(
-          `<div class="main_column__item"><img src="admin/img/${
+          `<div class="main_column__item" onclick="openModal(); currentSlide(${img_index})"><img src="admin/img/${
             stringToImageArray(element.img)[i]
           }" alt=""></div>`
         );
+
+        modal.append(`
+        <div class="mySlides">
+            <img src="admin/img/${
+              stringToImageArray(element.img)[i]
+            }" alt="Фото 1">
+        </div>
+    `);
+        img_index++;
       }
     } else {
       $(`.main_column__${blockIndex + 1}`).append(
-        `<div class="main_column__item"><img src="admin/img/${stringToImageArray(
+        `<div class="main_column__item" onclick="openModal(); currentSlide(${img_index})"><img src="admin/img/${stringToImageArray(
           element.img
         )}" alt=""></div>`
       );
+
+      modal.append(`
+      <div class="mySlides">
+          <img src="admin/img/${
+            stringToImageArray(element.img)[i]
+          }" alt="Фото 1">
+      </div>
+  `);
+      img_index++;
     }
   });
 });
 
 // ----------------------------------------------------------------
 
-
 // let popups = {};
 // // let popups2 = {};
-
 
 document.addEventListener("DOMContentLoaded", () => {
   getData("request").then((response) => {
@@ -90,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         bookedTimeSlots[date].push({
           startTime: time,
-          endTime: endTimeFormatted
+          endTime: endTimeFormatted,
         });
       } else if (element.modered == "no") {
         meetingDescription =
@@ -135,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
               $("#date_events").append(eventDiv);
             });
             $("#date_events").slideDown(600, function () {
-              $(this).css('display', 'flex');
+              $(this).css("display", "flex");
             });
           }
 
@@ -150,8 +169,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function generateTimeOptions(chosenDate, bookedTimeSlots) {
-  const timeSelect = document.getElementById('time_select');
-  timeSelect.innerHTML = '';
+  const timeSelect = document.getElementById("time_select");
+  timeSelect.innerHTML = "";
 
   // Если для выбранной даты есть забронированные промежутки времени, отключаем выбор в этих интервалах
   if (bookedTimeSlots[chosenDate]) {
@@ -167,7 +186,7 @@ function generateTimeOptions(chosenDate, bookedTimeSlots) {
         }
       }
       if (!isBooked) {
-        const option = document.createElement('option');
+        const option = document.createElement("option");
         option.value = timeSlot;
         option.textContent = timeSlot;
         timeSelect.appendChild(option);
@@ -177,15 +196,13 @@ function generateTimeOptions(chosenDate, bookedTimeSlots) {
     // Если для выбранной даты нет забронированных промежутков времени, разрешаем выбор с 10:00 до 18:00
     for (let i = 10; i <= 18; i++) {
       const hour = i < 10 ? "0" + i : i;
-      const option = document.createElement('option');
+      const option = document.createElement("option");
       option.value = hour + ":00";
       option.textContent = hour + ":00";
       timeSelect.appendChild(option);
     }
   }
 }
-
-
 
 // var targets = document.querySelectorAll(".swiper-slide");
 
@@ -207,4 +224,3 @@ function generateTimeOptions(chosenDate, bookedTimeSlots) {
 //   var config = { attributes: true, attributeFilter: ["class"] };
 //   observer.observe(target, config);
 // });
-

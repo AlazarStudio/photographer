@@ -33,14 +33,32 @@
         <div class="main_column main_column__3">
 
         </div>
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+    
+                <div class="mySlides">
+                    <img src="img/slide1.png" alt="Фото 1">
+                </div>
+    
+            </div>
+            <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a> -->
+            <!-- <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+    
+            <a class="prev" onclick="plusSlides(-1); stopPropagation(event)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1); stopPropagation(event)">&#10095;</a>
+    
+        </div>
     </main>
 
     <footer>
         <div class="footer_title">ИП Долаев А. <br> Все права защищены.</div>
         <a href="https://alazarstudio.ru" target="_blank" class="footer_logo"><img src="refs/logo_alazar_black.png" alt=""></a>
+        <a href="https://moibiz09.ru" target="_blank" class="footer_logo"><img src="refs/mybuis.png" alt=""></a>
     </footer>
     
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="js/galery.js"></script>
     <script type="module" src="edit.js"></script>
 </body>
 </html>
