@@ -5,14 +5,16 @@ $reversedRecords = array_reverse($records);
 ?>
 <div class="admin_info__item___content">
     <?php if ($tableName == 'request') { ?>
+        
         <div class="contentTitle">На рассмотрении</div>
         <?php foreach ($reversedRecords as $record) {
+
             $dateShow = '';
             if ($record['date']) {
                 $dateShow = date("d.m.Y", strtotime($record['date']));
             } ?>
             <?php if ($record['modered'] == 'no') { ?>
-                <div class="admin_info__item___content____element ">
+                <div class="admin_info__item___content____element " data-date=<?php echo $dateShow; ?> data-create=<?php echo $record['id']; ?>>
                     <div class="admin_info__item___content____element_____title">
                         <img src="img/<?php echo explode(",", $record['img'])[0]; ?>" alt="">
                         <?php echo ($record['title'] . '<br>' .  $dateShow) ?>
@@ -34,7 +36,7 @@ $reversedRecords = array_reverse($records);
                 $dateShow = date("d.m.Y", strtotime($record['date']));
             } ?>
             <?php if ($record['modered'] == 'yes') { ?>
-                <div class="admin_info__item___content____element ">
+                <div class="admin_info__item___content____element " data-date=<?php echo $dateShow; ?> data-create=<?php echo $record['id']; ?>>
                     <div class="admin_info__item___content____element_____title">
                         <img src="img/<?php echo explode(",", $record['img'])[0]; ?>" alt="">
                         <?php echo ($record['title'] . '<br>' .  $dateShow) ?>
